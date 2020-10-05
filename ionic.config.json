@@ -1,5 +1,7 @@
 {
   "name": "ion-scandit-poc",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
