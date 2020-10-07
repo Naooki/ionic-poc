@@ -8,5 +8,15 @@ if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.log(err));
+document.addEventListener('deviceready', bootstrap, false);
+
+function bootstrap() {
+  console.log('device is ready...');
+  // // @ts-ignore
+  // console.log(cordova.plugins);
+  // @ts-ignore
+  // console.log(ScanditCaptureCore);
+
+  platformBrowserDynamic().bootstrapModule(AppModule)
+    .catch(err => console.log(err));
+}

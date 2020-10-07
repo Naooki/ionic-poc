@@ -17,7 +17,7 @@ import { ScannerServiceProvider } from 'src/providers/scanner.service';
   providers: [
     StatusBar,
     SplashScreen,
-    ScannerServiceProvider,
+    ScannerServiceProvider, 
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

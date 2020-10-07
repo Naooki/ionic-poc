@@ -11,4 +11,9 @@ export class HomePage {
 
   constructor(private scanner: ScannerServiceProvider) {}
 
+
+  get scanditKeys() {
+    // @ts-ignore
+    return Object.keys(window.Scandit);
+  }
 }
