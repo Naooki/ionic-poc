@@ -13,13 +13,18 @@
     </ion-toolbar>
   </ion-header>
 
-  <h2>Scandit keys:</h2>
+  <!-- <h2>Scandit keys:</h2>
   <ul>
     <li *ngFor="let key of scanditKeys">{{key}}</li>
-  </ul>
+  </ul> -->
 
-  <div id="container">
+  <div id="result"></div>
+  <div id="scanner"></div>
+  <ion-button *ngIf="showSingleButton" class="button" mode="ios" (click)="startScanning()">Start Scanning</ion-button>
+  <ion-button *ngIf="showSingleDoneButton" class="button" mode="ios" (click)="doneSingle()">Done</ion-button>
+
+  <!-- <div id="container">
     <strong>Ready to create an app?</strong>
     <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  </div> -->
 </ion-content>

@@ -15,11 +15,13 @@ export class ScannerServiceProvider {
   private view;
   private overlay;
 
+  private readonly APP_KEY = "YOUR_LICENSE_KEY_IS_NEEDED_HERE";
+
   constructor(
     private zone: NgZone,
   ) {
     try {
-      this.context = Scandit.DataCaptureContext.forLicenseKey('YOUR_LICENSE_KEY_IS_NEEDED_HERE');
+      this.context = Scandit.DataCaptureContext.forLicenseKey(this.APP_KEY);
       this.camera = Scandit.Camera.default;
       this.context.setFrameSource(this.camera);
   
