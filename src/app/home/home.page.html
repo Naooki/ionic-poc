@@ -18,6 +18,9 @@
     <li *ngFor="let key of scanditKeys">{{key}}</li>
   </ul> -->
 
+  <h1>Hotel Lister:</h1>
+  <h2>{{HotelLister.title}}</h2>
+
   <div id="result"></div>
   <div id="scanner"></div>
   <ion-button *ngIf="showSingleButton" class="button" mode="ios" (click)="startScanning()">Start Scanning</ion-button>

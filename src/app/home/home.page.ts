@@ -16,6 +16,10 @@ export class HomePage {
 
   constructor(private scanner: ScannerServiceProvider) {}
 
+  get HotelLister() {
+    // @ts-ignore
+    return window.plugins.HotelLister;
+  }
 
   public startScanning() {
     this.showScanner();
