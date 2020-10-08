@@ -20,6 +20,9 @@
 
   <h1>Hotel Lister:</h1>
   <h2>{{HotelLister.title}}</h2>
+  <ul>
+    <li *ngFor="let hotel of hotels">{{hotel | json}}</li>
+  </ul>
 
   <div id="result"></div>
   <div id="scanner"></div>

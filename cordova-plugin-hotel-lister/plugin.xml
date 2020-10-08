@@ -24,5 +24,10 @@
 
     <source-file
       src="src/ios/HotelLister.swift"/>
+    <source-file
+	    src="src/ios/DatabaseManager.swift"/>
+
+    <framework custom="true" embed="true"
+      src="src/ios/framework/CouchbaseLiteSwift.framework" version="2.7.1" />
   </platform>
 </plugin>

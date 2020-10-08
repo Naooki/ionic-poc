@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { ScannerServiceProvider } from 'src/providers/scanner.service';
 
@@ -7,18 +7,27 @@ import { ScannerServiceProvider } from 'src/providers/scanner.service';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
   private barcodes: Barcode[] = [];
   private continuousMode: boolean = false;
   
   showSingleButton: boolean = true;
   showSingleDoneButton: boolean = false;
 
+  hotels: any[];
+
   constructor(private scanner: ScannerServiceProvider) {}
 
   get HotelLister() {
     // @ts-ignore
     return window.plugins.HotelLister;
+  }
+
+  ngOnInit() {
+    this.HotelLister.queryHotels((hotels) => {
+      console.log(hotels);
+      this.hotels = hotels;
+    });
   }
 
   public startScanning() {
