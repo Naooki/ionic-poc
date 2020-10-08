@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      MyApp
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Scanner</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="result"></div>
+  <div id="scanner"></div>
+  <ion-button *ngIf="showSingleButton" class="button" mode="ios" (click)="startScanning()">Start Scanning</ion-button>
+  <ion-button *ngIf="showSingleDoneButton" class="button" mode="ios" (click)="doneSingle()">Done</ion-button>
+
+</ion-content>

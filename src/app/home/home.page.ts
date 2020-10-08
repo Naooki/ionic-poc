@@ -1,94 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ScannerServiceProvider } from 'src/providers/scanner.service';
-
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  private barcodes: Barcode[] = [];
-  private continuousMode: boolean = false;
-  
-  showSingleButton: boolean = true;
-  showSingleDoneButton: boolean = false;
-
-  hotels: any[];
-
-  constructor(private scanner: ScannerServiceProvider) {}
+  hotels = [];
 
   get HotelLister() {
     // @ts-ignore
-    return window.plugins.HotelLister;
+    return window?.plugins?.HotelLister;
   }
 
   ngOnInit() {
-    this.HotelLister.queryHotels((hotels) => {
+    this.HotelLister?.queryHotels((hotels) => {
       console.log(hotels);
       this.hotels = hotels;
     });
-  }
-
-  public startScanning() {
-    this.showScanner();
-    this.showSingleButton = false;
-    this.showSingleDoneButton = false;
-    this.scanner.delegate = this;
-    this.scanner.start();
-  }
-
-  public startContinuousScanning() {
-    this.continuousMode = true;
-    document.getElementById('scanner').style.bottom = "10%";
-    this.startScanning();
-  }
-
-  public resumeScanning() {
-    this.scanner.resume();
-    this.showScanner();
-    this.showSingleButton = false;
-    this.showSingleDoneButton = false;
-  }
-
-  public doneSingle() {
-    this.hideScanner();
-    this.scanner.pause();
-    this.barcodes = [];
-    document.getElementById('result').innerHTML = "";
-    this.showSingleButton = true;
-    this.showSingleDoneButton = false;
-  }
-
-  public done() {
-    this.barcodes = [];
-    document.getElementById('result').style.display = "none";
-    document.getElementById('result').innerHTML = "";
-    this.showSingleButton = true;
-    this.showSingleDoneButton = false;
-    this.continuousMode = false;
-  }
-
-  public didScan(barcodeCapture: BarcodeCapture, session: BarcodeCaptureSession) {
-    this.barcodes = session.newlyRecognizedBarcodes;
-    this.hideScanner();
-    document.getElementById('result').style.display = "block";
-    this.scanner.pause();
-    this.showSingleDoneButton = true;
-    let scannedBarcode = "Scanned Code:<br><br>" + this.barcodes[0].symbology.toUpperCase() + ": " + this.barcodes[0].data;
-    document.getElementById('result').innerHTML = scannedBarcode;
-  }
-
-  public ionViewDidEnter(): void {
-  }
-
-  public showScanner() {
-    document.getElementById('scanner').style.display = "block";
-    document.getElementById('result').style.display = "none";
-    document.getElementById('result').innerHTML = "";
-  }
-
-  public hideScanner() {
-    document.getElementById('scanner').style.display = "none";
   }
 }
